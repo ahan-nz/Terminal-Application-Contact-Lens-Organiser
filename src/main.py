@@ -9,15 +9,16 @@ try:
 
     # Print results to terminal, including + or - signs, as per optometry convention
     if clrx >= 0:
-        print(f"The contact lens prescription is +{clrx:.2f}DS.")
+        print(f"The contact lens prescription required is +{clrx:.2f}DS.")
     else:
-        print(f"The contact lens prescription is {clrx:.2f}DS.")
+        print(f"The contact lens prescription required is {clrx:.2f}DS.")
 
+# Error handling for input parameters
 except ValueError:
-    print('Please enter a valid Rx in numeric format.')
+    print('Please enter a valid input in numeric format.')
     sys.exit(1)
 except Exception:
-    print('Oops! Something went wrong. Try again.')
+    print('Oops! Something went wrong. Please try again.')
     sys.exit(1)
 
 # Selecting modality, or wearing schedule, of contact lens
@@ -48,13 +49,18 @@ elif modality.lower() == 'monthly':
 for line in f:
         print(f'{line.strip()}')
 
-#close file
+# Close txt file
 f. close()
 
 # User input chosen lens, patient ID and number of lenses needed
 lens = input('Enter your choice: ')
 id = input('Enter patient ID: ')
-amount = input('Enter pairs of lenses needed: ')
+
+try:
+    amount = int(input('Enter pairs of lenses needed: '))
+except ValueError:
+    print('Please enter an integer value.')
+    sys.exit(1)
 
 # Confirm with user that the details are correct
 confirm = input(f"Your order: {amount} pair(s) of {clrx:.2f}DS {lens} lenses, for patient #{id}. Y/N: ")
@@ -77,19 +83,25 @@ if confirm.lower() == 'y':
     elif if_ordered.lower() == 'n':
         with open('pending.csv', 'a') as ordered:
             writer = csv.DictWriter(ordered, fieldnames = fields)
-            writer.writerow(order)
+            writer.writerow(order)\
+            
+    else:
+        print('Please enter \'Y\' or \'N\'')
+        pass # loop back to line 74
 
 elif confirm.lower() == 'n':
+    print('Please start again.')
     pass #loop back to line 1
 
 else:
     print('Please enter \'Y\' or \'N\'')
+    pass # loop back to line 66
 
 # Would you like to add another order? 
 moreorders = input('Would you like to add another order? Y/N: ')
 
 if moreorders.lower() == 'y':
-    pass # return to beginning
+    pass # loop back to line 1
 
 # If no, end programme
 elif moreorders.lower() == 'n':
@@ -97,3 +109,4 @@ elif moreorders.lower() == 'n':
 
 else:
     print('Please enter \'Y\' or \'N\'')
+    pass # Loop back to line 101
