@@ -1,27 +1,34 @@
 import csv
 from datetime import date
 import sys
+import enum
 import contactrx
 
 print('\nWelcome to Alicia\'s contact lens ordering programme, made for optometrists and clinic staff.\n')
 
-# Get contact lens prescription and assign to variable
-try:
-    clrx = contactrx.clrx()
-
-    # Print results to terminal, including + or - signs, as per optometry convention
-    if clrx >= 0:
-        print(f"The contact lens prescription required is +{clrx:.2f}DS.")
-    else:
-        print(f"The contact lens prescription required is {clrx:.2f}DS.")
-
-# Error handling for input parameters
-except ValueError:
-    print('Please enter a valid input in numeric format.')
-    sys.exit(1)
-except Exception:
+def Exception():
     print('Oops! Something went wrong. Please try again.')
     sys.exit(1)
+
+# Get contact lens prescription and assign to variable
+while True:
+    try:
+        clrx = contactrx.clrx()
+
+        # Print results to terminal, including + or - signs, as per optometry convention
+        if clrx >= 0:
+            print(f"The contact lens prescription required is +{clrx:.2f}DS.")
+            break
+        else:
+            print(f"The contact lens prescription required is {clrx:.2f}DS.")
+            break
+
+    # Error handling for input parameters
+    except ValueError:
+        print('Please enter a valid input in numeric format.')
+        continue
+    except Exception:
+        Exception()
 
 # Selecting modality, or wearing schedule, of contact lens
 mod = ['daily', 'fortnightly', 'monthly']
@@ -78,8 +85,7 @@ while True:
         continue
 
     except Exception:
-        print('Oops! Something went wrong. Please try again.')
-        sys.exit(1)
+        Exception()
 
 for retry in range(5):
     # Confirm with user that the details are correct
