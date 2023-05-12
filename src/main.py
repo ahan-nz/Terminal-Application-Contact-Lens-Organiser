@@ -1,3 +1,6 @@
+import csv
+from datetime import date
+
 # Calculate contact lens prescription, and round result to nearest 0.25 dioptre steps as per optometry convention
 def clrx():
    return round((rx / (1 - ((d/1000) * rx))) * 4)/4
@@ -48,15 +51,28 @@ id = input('Enter patient ID: ')
 amount = input('Enter pairs of lenses needed: ')
 
 confirm = input(f"Your order: {amount} pair(s) of {clrx:.2f}DS {lens} lenses, for patient #{id}. Y/N: ")
-if confirm == 'y' or 'yes':
-    pass # print to csv/txt file
+if confirm.lower() == 'y' or 'yes':
+    today = date.today().strftime('%d-%m-%Y')
+    order = {'Date': today, 'Patient ID': id, 'Lens': lens, 'CL Rx': clrx, 'Amount (pairs)': amount}
+    fields = ['Date', 'Patient ID', 'Lens', 'CL Rx', 'Amount (pairs)']
+    # Has this order been placed
+    if_ordered = input('Has this order already been placed? Y/N: ')
+    # If yes, print to ordered.csv file with today's date
+    if if_ordered.lower() == 'y':
+        with open('ordered.csv', 'a') as ordered:
+            writer = csv.DictWriter(ordered, fieldnames = fields)
+            writer.writerow(order)
+
+    # else, print to pending.csv file with today's date
+    elif if_ordered.lower() == 'n':
+        with open('pending.csv', 'a') as ordered:
+            writer = csv.DictWriter(ordered, fieldnames = fields)
+            writer.writerow(order)
+
+
 else:
     pass #loop back to line 1
 
-# Has this order been placed Y/N
-
-# If yes, print to ordered.csv file with today's date
-# else, print to pending.csv file with today's date
 
 # Would you like to add another order? 
 # If yes, return to beginning
