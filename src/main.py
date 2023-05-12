@@ -1,15 +1,10 @@
 import csv
 from datetime import date
+import contactrx
 
-# Calculate contact lens prescription, and round result to nearest 0.25 dioptre steps as per optometry convention
-def clrx():
-   return round((rx / (1 - ((d/1000) * rx))) * 4)/4
+# Get contact lens prescription and assign to variable
+clrx = contactrx.clrx()
 
-# Get user input for spectacle prescription (Rx) and back vertex distance (BVD)
-rx = float(input('Enter spherical Rx (DS): '))
-d = float(input('Enter back vertex distance (mm): '))
-
-clrx = clrx()
 # Print results, including + or - signs, as per optometry convention
 if clrx >= 0:
     print(f"The contact lens prescription is +{clrx:.2f}DS.")
@@ -27,7 +22,7 @@ modality = ''
 while modality.lower() not in mod:
     modality = input('Your choice: ')
 
-# Selecting the lens desired
+# Opening selection of contact lenses depending on the modality, and print it to terminal.
 
 print('Please choose from the following lenses: ')
 
@@ -41,17 +36,17 @@ elif modality.lower() == 'monthly':
     f = open('monthly.txt')
 
 for line in f:
-    print(f'{line.strip()}')
+        print(f'{line.strip()}')
 
-lens = input('Your choice: ')
-
+#close file
 f. close()
 
+lens = input('Enter your choice: ')
 id = input('Enter patient ID: ')
 amount = input('Enter pairs of lenses needed: ')
 
 confirm = input(f"Your order: {amount} pair(s) of {clrx:.2f}DS {lens} lenses, for patient #{id}. Y/N: ")
-if confirm.lower() == 'y' or 'yes':
+if confirm.lower() == 'y':
     today = date.today().strftime('%d-%m-%Y')
     order = {'Date': today, 'Patient ID': id, 'Lens': lens, 'CL Rx': clrx, 'Amount (pairs)': amount}
     fields = ['Date', 'Patient ID', 'Lens', 'CL Rx', 'Amount (pairs)']
@@ -69,11 +64,21 @@ if confirm.lower() == 'y' or 'yes':
             writer = csv.DictWriter(ordered, fieldnames = fields)
             writer.writerow(order)
 
-
-else:
+elif confirm.lower() == 'n':
     pass #loop back to line 1
 
+else:
+    print('Please enter \'Y\' or \'N\'')
 
 # Would you like to add another order? 
-# If yes, return to beginning
-# If no, end programme.
+moreorders = input('Would you like to add another order? Y/N: ')
+
+if moreorders.lower() == 'y':
+    pass # return to beginning
+
+# If no, end programme
+elif moreorders.lower() == 'n':
+    print('Thank you for using our programme.')
+
+else:
+    print('Please enter \'Y\' or \'N\'')
