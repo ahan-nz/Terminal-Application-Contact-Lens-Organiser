@@ -1,8 +1,8 @@
 import csv
 from datetime import date
 import sys
-import enum
 import contactrx
+import inputfunctions
 
 print('\nWelcome to Alicia\'s contact lens ordering programme, made for optometrists and clinic staff.\n')
 
@@ -69,14 +69,12 @@ def open_list():
 
 open_list()
 
-def invalid_choices():
-    print('Too many invalid choices, programme ending.')
-    sys.exit(1)
-
-# User input chosen lens, patient ID and number of lenses needed
+# User input chosen lens, leaving options open in case choice isn't in the list, for example a speciality contact lens or from a specific lab
 lens = input('Enter your choice, or specify another lens: ')
+# User input patient ID, format would be clinic-dependent, e.g. by system ID number, surname, initials, etc.
 id = input('Enter patient ID: ')
 
+# User input amount of lenses needed
 while True:
     try:
         amount = int(input('Enter pairs of lenses needed: '))
@@ -94,12 +92,9 @@ while True:
     except Exception:
         exception()
 
-def y_or_n():
-    print('Please enter \'Y\' or \'N\'.')
-
 for retry in range(5):
     # Confirm with user that the details are correct
-    confirm = input(f"Your order: {amount} pair(s) of {clrx:.2f}DS {lens} lenses, for patient #{id}. Y/N: ")
+    confirm = input(f"Your order is: {amount} pair(s) of {clrx:.2f}DS {lens} lenses, for patient #{id}. Y/N: ")
 
     if confirm.lower() == 'y':
         today = date.today().strftime('%d-%m-%Y')
@@ -125,10 +120,10 @@ for retry in range(5):
                 break
                     
             else:
-                y_or_n()
+                inputfunctions.y_or_n()
 
         else:
-            invalid_choices()
+            inputfunctions.invalid_choices()   
 
         break
 
@@ -137,10 +132,12 @@ for retry in range(5):
         sys.exit(1)
 
     else:
-        y_or_n()
+        inputfunctions.y_or_n()
 
 else:
-    invalid_choices()
+    inputfunctions.invalid_choices()   
+
+# Read csv files and print as dictionary
 
 def read_ordered_lenses():
     print('The following orders have been placed:')
@@ -156,8 +153,10 @@ def read_pending_lenses():
         for row in reader:
             print(row)
 
+# Get history of orders placed and pending orders
+
 while True:
-    history = input('Would you like to see previous order details? Y/N: ')
+    history = input('Would you like to see the history of order details? Y/N: ')
 
     if history.lower() == 'y':
         read_ordered_lenses()
@@ -168,6 +167,6 @@ while True:
         break
 
     else:
-        y_or_n()
+        inputfunctions.y_or_n()
 
 print('\nThank you for using this programme!\n')
