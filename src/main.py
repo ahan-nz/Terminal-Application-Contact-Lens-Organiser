@@ -6,7 +6,7 @@ import contactrx
 
 print('\nWelcome to Alicia\'s contact lens ordering programme, made for optometrists and clinic staff.\n')
 
-def Exception():
+def exception():
     print('Oops! Something went wrong. Please try again.')
     sys.exit(1)
 
@@ -28,7 +28,7 @@ while True:
         print('Please enter a valid input in numeric format.')
         continue
     except Exception:
-        Exception()
+        exception()
 
 # Selecting modality, or wearing schedule, of contact lens
 mod = ['daily', 'fortnightly', 'monthly']
@@ -48,7 +48,7 @@ while True:
             print('Invalid selection, please choose from \'daily\', \'fortnightly\', or \'monthly\'.')
 
 # Opening selection of contact lenses from external txt file, depending on the modality
-def openlist():
+def open_list():
     print('Please choose from the following lenses: ')
 
     if modality.lower() == 'daily':
@@ -67,9 +67,9 @@ def openlist():
     # Close txt file
     f. close()
 
-openlist()
+open_list()
 
-def invalidchoices():
+def invalid_choices():
     print('Too many invalid choices, programme ending.')
     sys.exit(1)
 
@@ -92,7 +92,7 @@ while True:
         continue
 
     except Exception:
-        Exception()
+        exception()
 
 def y_or_n():
     print('Please enter \'Y\' or \'N\'.')
@@ -128,7 +128,7 @@ for retry in range(5):
                 y_or_n()
 
         else:
-            invalidchoices()
+            invalid_choices()
 
         break
 
@@ -140,7 +140,7 @@ for retry in range(5):
         y_or_n()
 
 else:
-    invalidchoices()
+    invalid_choices()
 
 def read_ordered_lenses():
     print('The following orders have been placed:')
