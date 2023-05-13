@@ -134,4 +134,32 @@ else:
     print('Too many invalid choices, programme ending.')
     sys.exit(1)
 
-print('Thank you for using our programme.')
+def read_ordered_lenses():
+    print('The following orders have been placed:')
+    with open('ordered.csv') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            print(row)
+
+def read_pending_lenses():
+    print('The following orders are pending:')
+    with open('pending.csv') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            print(row)
+
+while True:
+    history = input('Would you like to see previous order details? Y/N: ')
+
+    if history.lower() == 'y':
+        read_ordered_lenses()
+        read_pending_lenses()
+        break
+
+    elif history.lower() == 'n':
+        break
+
+    else:
+        print('Please enter \'Y\' or \'N\'.')
+
+print('\nThank you for using this programme!\n')
