@@ -69,6 +69,10 @@ def openlist():
 
 openlist()
 
+def invalidchoices():
+    print('Too many invalid choices, programme ending.')
+    sys.exit(1)
+
 # User input chosen lens, patient ID and number of lenses needed
 lens = input('Enter your choice, or specify another lens: ')
 id = input('Enter patient ID: ')
@@ -124,8 +128,7 @@ for retry in range(5):
                 y_or_n()
 
         else:
-            print('Too many invalid choices, programme ending.')
-            sys.exit(1)
+            invalidchoices()
 
         break
 
@@ -137,8 +140,7 @@ for retry in range(5):
         y_or_n()
 
 else:
-    print('Too many invalid choices, programme ending.')
-    sys.exit(1)
+    invalidchoices()
 
 def read_ordered_lenses():
     print('The following orders have been placed:')
