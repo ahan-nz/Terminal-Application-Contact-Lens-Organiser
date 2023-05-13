@@ -4,7 +4,7 @@ import sys
 import contactrx
 import inputfunctions
 
-print('\nWelcome to Alicia\'s contact lens ordering programme, made for optometrists and clinic staff.\n')
+print("\nWelcome to Alicia's contact lens ordering programme, made for optometrists and clinic staff.\n")
 
 def exception():
     print('Oops! Something went wrong. Please try again.')
@@ -45,7 +45,7 @@ while True:
             break
         
         else:
-            print('Invalid selection, please choose from \'daily\', \'fortnightly\', or \'monthly\'.')
+            print("Invalid selection, please choose from 'daily', 'fortnightly', or 'monthly'.")
 
 # Opening selection of contact lenses from external txt file, depending on the modality
 def open_list():
@@ -83,10 +83,10 @@ while True:
             break
             
         else:
-            print('Amount can\'t be less than 1!')
+            print("Amount can't be less than 1!")
 
     except ValueError:
-        print('Value entered wasn\'t an integer.')
+        print("Value entered wasn't an integer.")
         continue
 
     except Exception:

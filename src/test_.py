@@ -24,4 +24,4 @@ class TestSpam(unittest.TestCase):
     def test_y_or_n(self):
         inputfunctions.y_or_n()
         captured = self.capsys.readouterr()
-        self.assertEqual('Please enter \'Y\' or \'N\'.\n', captured.out)
+        self.assertEqual("Please enter 'Y' or 'N'.\n", captured.out)
