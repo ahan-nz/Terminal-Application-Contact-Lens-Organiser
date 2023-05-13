@@ -48,23 +48,26 @@ while True:
             print('Invalid selection, please choose from \'daily\', \'fortnightly\', or \'monthly\'.')
 
 # Opening selection of contact lenses from external txt file, depending on the modality
-print('Please choose from the following lenses: ')
+def openlist():
+    print('Please choose from the following lenses: ')
 
-if modality.lower() == 'daily':
-    f = open('daily.txt')
-        
-elif modality.lower() == 'fortnightly':
-    f = open('fortnightly.txt')
+    if modality.lower() == 'daily':
+        f = open('daily.txt')
+            
+    elif modality.lower() == 'fortnightly':
+        f = open('fortnightly.txt')
 
-elif modality.lower() == 'monthly':
-    f = open('monthly.txt')
+    elif modality.lower() == 'monthly':
+        f = open('monthly.txt')
 
-# Printing list of available contact lenses to terminal
-for line in f:
-        print(f'{line.strip()}')
+    # Printing list of available contact lenses to terminal
+    for line in f:
+            print(f'{line.strip()}')
 
-# Close txt file
-f. close()
+    # Close txt file
+    f. close()
+
+openlist()
 
 # User input chosen lens, patient ID and number of lenses needed
 lens = input('Enter your choice, or specify another lens: ')
@@ -86,6 +89,9 @@ while True:
 
     except Exception:
         Exception()
+
+def y_or_n():
+    print('Please enter \'Y\' or \'N\'.')
 
 for retry in range(5):
     # Confirm with user that the details are correct
@@ -115,7 +121,7 @@ for retry in range(5):
                 break
                     
             else:
-                print('Please enter \'Y\' or \'N\'.')
+                y_or_n()
 
         else:
             print('Too many invalid choices, programme ending.')
@@ -128,7 +134,7 @@ for retry in range(5):
         sys.exit(1)
 
     else:
-        print('Please enter \'Y\' or \'N\'.')
+        y_or_n()
 
 else:
     print('Too many invalid choices, programme ending.')
@@ -160,6 +166,6 @@ while True:
         break
 
     else:
-        print('Please enter \'Y\' or \'N\'.')
+        y_or_n()
 
 print('\nThank you for using this programme!\n')
