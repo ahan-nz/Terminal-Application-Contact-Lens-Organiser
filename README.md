@@ -3,7 +3,7 @@
 
 [Github Repository](https://github.com/ahan-nz/CA-T1A3-TerminalApplication)
 
-[Video Presentation](https://youtu
+[Video Presentation](https://youtu.be/FTdp2enOZwI)
 
 [My Trello Board](https://trello.com/b/ZHAu8luF/ca-t1a3-terminal-app)
 
