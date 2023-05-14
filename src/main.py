@@ -69,8 +69,9 @@ def open_list():
 
 open_list()
 
-# User input chosen lens, leaving options open in case choice isn't in the list, for example a speciality contact lens or from a specific lab
+# User input chosen lens, leaving options open in case choice isn't in the list
 lens = input('Enter your choice, or specify another lens: ')
+
 # User input patient ID, format would be clinic-dependent, e.g. by system ID number, surname, initials, etc.
 id = input('Enter patient ID: ')
 
