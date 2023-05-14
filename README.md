@@ -7,16 +7,6 @@
 
 [My Trello Board](https://trello.com/b/ZHAu8luF/ca-t1a3-terminal-app)
 
-### Style Guide
-
-This application in Python follows the PEP8 Style Guide (van Rossum, Warsaw and Coghlan, 2023). This includes, but isn't limited to, the following guidelines:
-* 4 spaces per indentation level
-* Maximum line length is 79 characters
-* Imports on separate lines
-* Using single-quoted strings consistently, except when an apostrophe appears in the string, in which case double-quotes were used to avoid backslashes, and hence improve readability
-* Comments in complete sentences and the first word is capitalised. Also inline comments were avoided
-* Function names are in lower case and words are separated by underscores to improve readability.
-
 ### Purpose and Key Features
 
 This terminal application is designed to log and track contact lens orders, for use in optometric practices by optometrists and clinic staff. Often, the process of ordering contact lenses vary significantly from clinic to clinic, there is a lot of paper work, orders have to be made across several websites and there isn't a central digital system to monitor these orders. This makes it difficult not only for organisation and tracking within a busy clinic, but also for locum optometrists and dispensing staff working across multiple locations.
@@ -43,9 +33,33 @@ The user will be prompted to enter whether they would like to display the order 
 
 ### Implementation Plan
 
-I utlised Trello to help me plan and implement this project. For each feature, I added a checklist to help me track and organise what I have completed and what I need to do next.
+I utlised Trello to help me plan and implement this project. For each feature, I added a checklist to help me outline and track what I have completed and what I need to do next. More details were added and modifications were made during this process.
 
+Snapshots of my progress:
 
+![Trello Overview 1](docs/trellooverview1.png)
+![Trello Overview 2](docs/trellooverview2.png)
+![Trello Overview 3](docs/trellooverview3.png)
+![Trello Overview 4](docs/trellooverview4.png)
+
+Here are the checklists for each feature:
+
+![Checklist Feature 1](docs/trellofeature1.png)
+![Checklist Feature 2](docs/trellofeature2.png)
+![Checklist Feature 3](docs/trellofeature3.png)
+![Checklist Feature 4](docs/trellofeature4.png)
+![Checklist Feature 5](docs/trellofeature5.png)
+![Checklist README.md](docs/trelloreadme.png)
+
+### Style Guide
+
+This application in Python follows the PEP8 Style Guide (van Rossum, Warsaw and Coghlan, 2023). This includes, but isn't limited to, the following guidelines:
+* 4 spaces per indentation level
+* Maximum line length is 79 characters
+* Imports on separate lines
+* Using single-quoted strings consistently, except when an apostrophe appears in the string, in which case double-quotes were used to avoid backslashes, and hence improve readability
+* Comments in complete sentences and the first word is capitalised. Also inline comments were avoided
+* Function names are in lower case and words are separated by underscores to improve readability.
 
 ### Bash Script
 
@@ -91,6 +105,8 @@ fi
 ### References
 
 * van Rossum, G., Warsaw, B. and Coghlan, N. (2023). PEP 8 – Style Guide for Python Code | peps.python.org. [online] peps.python.org. Available at: https://peps.python.org/pep-0008/.
+
+* www.gnu.org. (2022). Bash Reference Manual. [online] Available at: https://www.gnu.org/software/bash/manual/bash.html.
 
 * Python Software Foundation (2023). csv — CSV File Reading and Writing — Python 3.8.1 documentation. [online] Python.org. Available at: https://docs.python.org/3/library/csv.html.
 
